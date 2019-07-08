@@ -1,0 +1,56 @@
+<!DOCTYPE html>   
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Tamagotchi Game</title>
+		
+	</head>
+
+	<body>
+
+		<h1>Tamagotchi</h1>
+
+		<div id="welcome">Submit your pet's name.</div>
+
+		<!-- <div id="animate"> -->
+			<img class="movingStitch" id="stitch" src="https://media.giphy.com/media/yN5xPFm8klwMddZVKi/giphy.gif" alt="Dancing Stitch"/>
+		<!-- </div> -->
+
+		<li class="player-buttons">
+			<button id="btnHunger" type="button" class="btn btn-light">Feed</button>
+			<button id="btnSleep" type="button" class="btn btn-light">Turn Off the Lights</button>
+			<button id="btnPlay" type="button" class="btn btn-light">Play</button>
+		</li>
+
+
+		<div id="HungerStats">
+			<p align="Center">
+				Hunger: <progress id="HungerBar" min ="0" max ="10" value = "10"></progress>
+			</p>
+		</div>
+
+		<div id="SleepStats">
+			<p align="Center">
+				Sleep: <progress id="SleepBar" min ="0" max ="10" value = "10"></progress>
+			</p>
+		</div>
+
+		<div id="PlayStats">
+			<p align="Center">
+				Play: <progress id="PlayBar" min ="0" max ="10" value = "10"></progress>
+			</p>
+		</div>
+
+		<div id="GetOldStats">
+			<p align="Center">
+				Age: <progress id="OldBar" min ="0" max ="10" value = "0"></progress>
+			</p>
+		</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>
