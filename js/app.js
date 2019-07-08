@@ -124,8 +124,7 @@ window.onload = function() { //more info about onload event https://www.w3school
 		if (hunger === 0){
 			document.getElementById("stitch").src = "https://i.gifer.com/3iCR.gif";
 			alert("You didn't feed " + animalName + " enough food, game over!");
-			$(".movingStitch").removeClass();
-			
+			$(".movingStitch").removeClass();  //Moving images https://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/
 			clearInterval(clock1);
 			clearInterval(clock2);
 			clearInterval(clock3);
