@@ -17,7 +17,7 @@ window.onload = function() { //more info about onload event https://www.w3school
 	//create pet and ask for player input for name More info https://www.universalclass.com/articles/computers/javascript/user-input-and-output-in-javascript.htm
 	let pet = new Tamagotchi(); //()user input pass into constructor above
 		var animalName = prompt("Press the buttons to feed, put to bed and play with your Tamagotchi. If any of his stats reach 0 or 10 he dies. Name your tamagotchi", "");
-		if (animalName != null) {
+		if (animalName != null) {	
 
 		document.getElementById("welcome").innerHTML="Take care of " + animalName;
 	}
@@ -170,7 +170,7 @@ window.onload = function() { //more info about onload event https://www.w3school
 			clearInterval(clock4);		
 		} else if (age >= 10) {
 			document.getElementById("stitch").src = "https://i.gifer.com/3iCR.gif";
-			alert(animalName + " lived it's best life but has now died of age.")
+			alert(animalName + " lived it's best life, but has now died of age.")
 			$(".movingStitch").removeClass();
 			clearInterval(clock1);
 			clearInterval(clock2);
