@@ -1,15 +1,9 @@
 // assignment info https://git.generalassemb.ly/WebDev-Connected-Classroom/Tomagotchi-Mini-Project/blob/master/README.md
 
-console.log("tamagotchi");
-
 window.onload = function() { //more info about onload event https://www.w3schools.com/jsref/event_onload.asp
 
 	class Tamagotchi { //made a class
 		constructor(){
-			// this.hunger = 5; //1-10
-			// this.sleepiness = 5; //1-10
-			// this.boredom = 5; //1-10
-			// this.age = 0; //increases after a certain amount of time
 			this.name = name; //whatever name the user inputs
 		}
 	}
@@ -22,7 +16,6 @@ window.onload = function() { //more info about onload event https://www.w3school
 		document.getElementById("welcome").innerHTML="Take care of " + animalName;
 	}
 
-
 	//All variables. More info about intervals https://www.w3schools.com/jsref/met_win_setinterval.asp
 	var hunger = 10;
 	var clock1 = setInterval(hungerDown, 3000); //1000 is 1 second => every 3 seconds lower 
@@ -32,6 +25,7 @@ window.onload = function() { //more info about onload event https://www.w3school
 	var clock3 = setInterval(boredomDown, 3000); //1000 is 1 second => every 3 seconds lower
 	var age = 0
 	var clock4 = setInterval(getOld, 10000) //1000 is 1 second => every minute add 1 year to its age
+	var changeBar = setInterval(updateBar, 300) //update the bars every 300 millisecond
 	// var gameOver = 0;
 
 	//buttons for the player More info https://www.w3schools.com/jsref/event_onclick.asp
@@ -70,44 +64,40 @@ window.onload = function() { //more info about onload event https://www.w3school
 	// Hunger goes down
 	function hungerDown() {
 		if (hunger === 0) {
-			clearInterval(clock1);
 			gameOverCheck();
 		} else {
 			hunger--;
-			document.getElementById("HungerBar").value = hunger;
+			updateBar()
 		}
 	}
 
 	// Sleep goes down
 	function sleepDown() {
 		if (sleep === 0) {
-			clearInterval(clock2);
 			gameOverCheck();
 		} else { 
 			sleep--;
-			document.getElementById("SleepBar").value = sleep;
+			updateBar()
 		}
 	}
 
 	// Boredom goes down
 	function boredomDown() {
 		if (play === 0) {
-			clearInterval(clock3);
 			gameOverCheck();
 		} else { 
 			play--;
-			document.getElementById("PlayBar").value = play;
+			updateBar()
 		}
 	}
 
 	//Adds 1 age every ten seconds (follow timer)
 	function getOld() { 
 		if (age >= 10) {
-			clearInterval(clock4);
 			gameOverCheck();
 		} else {
 			age++;
-			document.getElementById("OldBar").value = age;
+			updateBar()
 			transform();
 		}
 	}
@@ -119,63 +109,59 @@ window.onload = function() { //more info about onload event https://www.w3school
 		}
 	} 
 
+	//Clears All Intervals
+	function clearAllIntervals() {
+		clearInterval(clock1);
+		clearInterval(clock2);
+		clearInterval(clock3);
+		clearInterval(clock4);
+	}
+
+	//Update the bars functions
+	function updateBar() {
+		document.getElementById("HungerBar").value = hunger;
+		document.getElementById("SleepBar").value = sleep;
+		document.getElementById("PlayBar").value = play;
+		document.getElementById("OldBar").value = age;
+	}
+
 	//Game Over Conditions
 	function gameOverCheck(){
 		if (hunger === 0){
 			document.getElementById("stitch").src = "https://i.gifer.com/3iCR.gif";
 			alert("You didn't feed " + animalName + " enough food, game over!");
 			$(".movingStitch").removeClass();  //Moving images https://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/
-			clearInterval(clock1);
-			clearInterval(clock2);
-			clearInterval(clock3);
-			clearInterval(clock4);
+			clearAllIntervals()
 		} else if (hunger >=10){
 			document.getElementById("stitch").src = "https://i.gifer.com/3iCR.gif";
 			alert("You fed " + animalName + " too much food, game over!");	
 			$(".movingStitch").removeClass();
-			clearInterval(clock2);
-			clearInterval(clock3);
-			clearInterval(clock4);		
+			clearAllIntervals()		
 		} else if (sleep === 0){
 			document.getElementById("stitch").src = "https://i.gifer.com/3iCR.gif";
 			alert(animalName + " didn't get enough rest, game over!");	
 			$(".movingStitch").removeClass();
-			clearInterval(clock1);
-			clearInterval(clock2);
-			clearInterval(clock3);
-			clearInterval(clock4);		
+			clearAllIntervals()		
 		} else if (sleep >= 10){
 			document.getElementById("stitch").src = "https://i.gifer.com/3iCR.gif";
 			alert(animalName + " got too much rest, game over!");	
 			$(".movingStitch").removeClass();
-			clearInterval(clock1);
-			clearInterval(clock2);
-			clearInterval(clock3);
-			clearInterval(clock4);
+			clearAllIntervals()
 		} else if (play === 0){
 			document.getElementById("stitch").src = "https://i.gifer.com/3iCR.gif";
 			alert(animalName + " died of boredom, game over!");	
 			$(".movingStitch").removeClass();
-			clearInterval(clock1);
-			clearInterval(clock2);
-			clearInterval(clock3);
-			clearInterval(clock4);		
+			clearAllIntervals()		
 		} else if (play >= 10){
 			document.getElementById("stitch").src = "https://i.gifer.com/3iCR.gif";
 			alert("You made " + animalName + " play too much, game over!");	
 			$(".movingStitch").removeClass();
-			clearInterval(clock1);
-			clearInterval(clock2);
-			clearInterval(clock3);
-			clearInterval(clock4);		
+			clearAllIntervals()		
 		} else if (age >= 10) {
 			document.getElementById("stitch").src = "https://i.gifer.com/3iCR.gif";
 			alert(animalName + " lived it's best life, but has now died of age.")
 			$(".movingStitch").removeClass();
-			clearInterval(clock1);
-			clearInterval(clock2);
-			clearInterval(clock3);
-			clearInterval(clock4);
+			clearAllIntervals()
 		}
 	}
 }
